@@ -36,7 +36,7 @@ export default function Header({ language, toggleLanguage }: HeaderProps) {
           {/* Logo / Nombre */}
           <div className="flex-shrink-0">
             <a href="#" className="text-xl font-bold text-slate-800 tracking-tight">
-              Patricio<span className="text-slate-500 font-medium">Gaitan</span>
+              Patricio Iván <span className="text-slate-500 font-medium">Gaitan Vaca</span>
             </a>
           </div>
 
@@ -62,7 +62,7 @@ export default function Header({ language, toggleLanguage }: HeaderProps) {
               {language === 'EN' ? 'ES' : 'EN'}
             </button>
             <a 
-              href="mailto:tu-correo@ejemplo.com"
+              href="mailto:patricioi170506@gmail.com"
               className="inline-flex items-center justify-center bg-slate-800 text-white text-sm font-medium rounded-xl px-5 py-2.5 hover:bg-slate-700 transition-colors shadow-sm"
             >
               {language === 'EN' ? 'Contact Me' : 'Contáctame'}
@@ -105,7 +105,7 @@ export default function Header({ language, toggleLanguage }: HeaderProps) {
             ))}
             <div className="pt-4">
               <a 
-                href="mailto:tu-correo@ejemplo.com"
+                href="mailto:patricioi170506@gmail.com"
                 onClick={toggleMenu}
                 className="block w-full text-center bg-slate-800 text-white font-medium rounded-xl px-5 py-3 shadow-sm"
               >
