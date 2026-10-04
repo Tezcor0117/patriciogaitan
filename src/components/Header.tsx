@@ -37,7 +37,7 @@ export default function Header({ language, toggleLanguage }: HeaderProps) {
           
           <div className="flex-shrink-0">
             <Link className="text-xl font-bold text-slate-800 tracking-tight" to="/">
-              Patricio<span className="text-slate-500 font-medium">Gaitan</span>
+              Patricio Iván <span className="text-slate-500 font-medium">Gaitan Vaca</span>
             </Link>
           </div>
 
