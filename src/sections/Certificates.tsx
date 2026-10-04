@@ -1,4 +1,5 @@
-import { FileText } from 'lucide-react';
+import { FileText, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface CertificatesProps {
   language: 'EN' | 'ES';
@@ -6,10 +7,19 @@ interface CertificatesProps {
 
 export default function Certificates({ language }: CertificatesProps) {
   const content = {
-    EN: { title: "Credentials & Certificates", viewBtn: "View Credential" },
-    ES: { title: "Credenciales y Certificados", viewBtn: "Ver Credencial" }
+    EN: { 
+      title: "Credentials & Certificates", 
+      viewAll: "View all certificates details",
+      ctaText: "Want to see more details and download the official documents?"
+    },
+    ES: { 
+      title: "Credenciales y Certificados", 
+      viewAll: "Ver detalles de los certificados",
+      ctaText: "¿Quieres ver más detalles y descargar los documentos oficiales?"
+    }
   };
 
+  // Quitamos la propiedad "file" para que sea meramente informativo
   const certificates = [
     {
       id: 1,
@@ -18,7 +28,6 @@ export default function Certificates({ language }: CertificatesProps) {
       institution: "CONISOFT",
       dateEN: "2025",
       dateES: "2025",
-      file: "/certificates/CONISOFT25_Attendance_Patricio_Gaitan_Vaca.pdf"
     },
     {
       id: 2,
@@ -27,7 +36,6 @@ export default function Certificates({ language }: CertificatesProps) {
       institution: "DGETI / Instituto Salesiano Carlos Gómez",
       dateEN: "June 2024",
       dateES: "Junio 2024",
-      file: "/certificates/Patricio_Gaitan_Technical_Diploma.pdf"
     }
   ];
 
@@ -38,14 +46,15 @@ export default function Certificates({ language }: CertificatesProps) {
           {content[language].title}
         </h2>
         
+        {/* Lista Informativa de Certificados */}
         <div className="flex flex-col gap-6">
           {certificates.map((cert) => (
             <div 
               key={cert.id} 
-              className="group flex flex-col sm:flex-row items-start sm:items-center justify-between p-6 bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all gap-4"
+              className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-6 bg-white border border-slate-200 rounded-2xl shadow-sm gap-4"
             >
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-slate-50 rounded-xl text-slate-600 group-hover:text-slate-800 group-hover:bg-slate-100 transition-colors">
+                <div className="p-3 bg-slate-50 rounded-xl text-slate-600">
                   <FileText className="w-6 h-6" />
                 </div>
                 <div>
@@ -59,19 +68,24 @@ export default function Certificates({ language }: CertificatesProps) {
                   </div>
                 </div>
               </div>
-              
-              <a 
-                href={cert.file} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white border border-slate-300 text-slate-700 text-sm font-semibold rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-colors shrink-0"
-              >
-                {content[language].viewBtn}
-                <FileText className="w-4 h-4" />
-              </a>
             </div>
           ))}
         </div>
+
+        {/* Call to Action para ir a la página dedicada */}
+        <div className="mt-16 text-center">
+          <p className="text-slate-600 mb-5 font-medium">
+            {content[language].ctaText}
+          </p>
+          <Link 
+            to="/certificados" 
+            className="inline-flex items-center gap-2 bg-slate-800 text-white font-semibold rounded-xl px-8 py-3.5 hover:bg-slate-700 transition-colors shadow-sm"
+          >
+            {content[language].viewAll}
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
+
       </div>
     </section>
   );
