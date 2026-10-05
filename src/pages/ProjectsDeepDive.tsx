@@ -7,7 +7,9 @@ import {
   ChevronLeft, 
   ChevronRight, 
   ExternalLink, 
-  Play 
+  Play,
+  Code,
+  Award
 } from 'lucide-react';
 
 interface PageProps {
@@ -15,21 +17,17 @@ interface PageProps {
 }
 
 export default function ProjectsDeepDive({ language }: PageProps) {
-  // Estado para controlar qué proyecto está abierto. 
-  // Iniciamos con 'tezcor-agency' desplegado por defecto.
   const [expandedProject, setExpandedProject] = useState<string | null>('tezcor-agency');
 
   const toggleProject = (id: string) => {
     setExpandedProject((prev) => (prev === id ? null : id));
   };
 
-  // Diccionario general de la página
   const ui = {
     EN: { back: "Back" },
     ES: { back: "Atrás" }
   };
 
-  // Arreglo maestro de Casos de Estudio
   const projects = [
     {
       id: 'tezcor-agency',
@@ -128,6 +126,90 @@ export default function ProjectsDeepDive({ language }: PageProps) {
           }
         ]
       }
+    },
+    {
+      id: 'soccer-analytics',
+      image: "/projects/soccer-analytics-heatmap.png",
+      techStack: ["Python", "Pandas", "Matplotlib", "Data Visualization"],
+      EN: {
+        title: "Soccer Match Data Analytics & Visualization",
+        subtitle: "Data Analyst & Python Developer",
+        contextTitle: "The Context",
+        contextBody: "This project was born from the initiative to merge my passion for soccer with software engineering. To deeply understand the data lifecycle, I bypassed pre-built datasets and manually collected spatial coordinates (X, Y) in real-time during matches. This self-taught approach—reinforced through specialized online certifications—allowed me to understand exactly which metrics are fundamental to generating actionable sports intelligence.",
+        challengesTitle: "Key Challenges & Solutions",
+        challengesBody: "The greatest technical challenge was high-frequency data acquisition. Manually tracking every single event of a full match created capture bottlenecks and noisy datasets. To resolve this, I optimized the collection methodology by applying scope filters: focusing exclusively on 'key events' (critical passes, shots, dribbles). This ensured the data volume maintained high quality and analytical relevance without overwhelming the manual input process.",
+        architectureTitle: "Architecture & Tech Stack",
+        architectureBody: "The data pipeline is built entirely in Python. I utilize pandas for data cleaning, transforming raw spatial inputs, and structuring DataFrames. For the visual and tactical representation, I integrate mplsoccer, a specialized library that renders pitch dimensions and overlays complex heatmaps and pass trajectories based on our start and end coordinates, effectively translating raw numbers into visual tactical analysis.",
+        techStackTitle: "Tech Stack",
+        buttons: [
+          {
+            text: "View Source",
+            href: "URL_GITHUB",
+            style: "outline",
+            icon: Code
+          },
+          {
+            text: "View Certificates",
+            href: "/certificados",
+            style: "solid",
+            icon: Award
+          }
+        ]
+      },
+      ES: {
+        title: "Soccer Match Data Analytics & Visualization",
+        subtitle: "Analista de Datos y Desarrollador Python",
+        contextTitle: "El Origen",
+        contextBody: "Este proyecto nació de la iniciativa de fusionar mi pasión por el fútbol con la ingeniería de software. Para comprender a fondo el ciclo de vida de los datos, decidí prescindir de datasets prefabricados y realizar la recolección manual de coordenadas espaciales (X, Y) en tiempo real durante los partidos. Este enfoque autodidacta —reforzado a través de certificaciones especializadas— me permitió entender exactamente qué métricas son fundamentales para generar inteligencia deportiva accionable.",
+        challengesTitle: "Retos y Soluciones",
+        challengesBody: "El mayor desafío técnico fue la adquisición de datos de alta frecuencia. Rastrear manualmente cada evento de un partido completo generaba cuellos de botella en la captura. Para resolver esto, optimicé la metodología de recolección aplicando filtros de alcance: me enfoqué exclusivamente en 'eventos clave' (pases críticos, tiros, regates). Esto aseguró que el volumen de datos mantuviera una alta calidad y relevancia analítica para la visualización estadística.",
+        architectureTitle: "Arquitectura y Operación",
+        architectureBody: "El pipeline de datos está construido íntegramente en Python. Utilizo pandas para la limpieza, transformación de datos crudos y estructuración de DataFrames. Para la representación espacial y táctica, integro mplsoccer, una biblioteca especializada que renderiza las dimensiones de la cancha y superpone mapas de calor (heatmaps) y trayectorias de pases basados en nuestras coordenadas de inicio y fin, traduciendo números brutos en análisis táctico visual.",
+        techStackTitle: "Tecnologías",
+        buttons: [
+          {
+            text: "Ver Código",
+            href: "URL_GITHUB",
+            style: "outline",
+            icon: Code
+          },
+          {
+            text: "Mis Certificados",
+            href: "/certificados",
+            style: "solid",
+            icon: Award
+          }
+        ]
+      }
+    },
+    {
+      id: 'wearable-assistant',
+      image: "/projects/wearable-arduino.jpg",
+      techStack: ["C", "Arduino", "Sensors", "Hardware Integration", "Soldering"],
+      EN: {
+        title: "Assistive Wearable Device for the Visually Impaired",
+        subtitle: "Hardware Engineer & C Developer",
+        contextTitle: "The Context",
+        contextBody: "Developed as a capstone project during my technical high school education, this wearable was created with a clear social purpose and successfully donated to a visually impaired user. While traditional white canes effectively map ground-level terrain, users remain vulnerable to head-level collisions. This project bridges that safety gap by integrating an early-warning technological solution directly into an everyday cap.",
+        challengesTitle: "Key Challenges & Solutions",
+        challengesBody: "The primary engineering challenge was the physical transition from a functional breadboard prototype to a permanent phenolic board. This required high-precision soldering to ensure circuit durability without damaging sensitive components. Additionally, we had to carefully design the hardware's physical integration onto the cap, ensuring the ultrasonic sensor's field of view remained completely unobstructed while maintaining ergonomic comfort for the end-user.",
+        architectureTitle: "Architecture & Tech Stack",
+        architectureBody: "The hardware architecture centers around an Arduino Uno connected to a custom-soldered phenolic board. It utilizes an ultrasonic sensor to continuously measure spatial depth, triggering a piezoelectric buzzer when physical obstacles breach a predefined safety threshold. The entire logic is programmed in bare-metal C, leveraging the microcontroller's low-level hardware control capabilities for real-time sensor processing.",
+        techStackTitle: "Tech Stack",
+        buttons: []
+      },
+      ES: {
+        title: "Assistive Wearable Device for the Visually Impaired",
+        subtitle: "Ingeniero de Hardware y Desarrollador C",
+        contextTitle: "El Origen",
+        contextBody: "Desarrollado como proyecto integrador durante mi educación técnica, este wearable fue creado con un claro propósito social y donado exitosamente a un usuario con debilidad visual. Mientras que los bastones tradicionales mapean eficazmente el terreno a ras de suelo, los usuarios siguen siendo vulnerables a colisiones a la altura de la cabeza. Este proyecto cierra esa brecha de seguridad integrando una solución tecnológica de alerta temprana directamente en una gorra de uso diario.",
+        challengesTitle: "Retos y Soluciones",
+        challengesBody: "El principal desafío de ingeniería fue la transición física de un prototipo funcional en protoboard a una placa fenólica permanente. Esto requirió soldadura de alta precisión para garantizar la durabilidad del circuito sin dañar los componentes. Además, tuvimos que diseñar cuidadosamente la integración física del hardware en la gorra, asegurando que el campo de visión del sensor ultrasónico permaneciera completamente libre de obstrucciones y manteniendo la comodidad ergonómica del usuario.",
+        architectureTitle: "Arquitectura y Operación",
+        architectureBody: "La arquitectura de hardware se centra en un Arduino Uno conectado a una placa fenólica soldada a medida. Utiliza un sensor ultrasónico para medir la profundidad espacial continuamente, activando un zumbador (buzzer) piezoeléctrico cuando los obstáculos superan un umbral de seguridad predefinido. Toda la lógica está programada en lenguaje C puro, aprovechando las capacidades de control de hardware de bajo nivel del microcontrolador para el procesamiento de sensores en tiempo real.",
+        techStackTitle: "Tecnologías",
+        buttons: []
+      }
     }
   ];
 
@@ -193,17 +275,6 @@ export default function ProjectsDeepDive({ language }: PageProps) {
                             <ChevronRight className="w-6 h-6" />
                           </button>
                         </div>
-
-                        {/* ========================================================================= */}
-                        {/* ESPACIO PARA FUTURA ACTUALIZACIÓN: REPRODUCTOR DE VIDEO O ANIMACIÓN */}
-                        {/* 
-                          <video 
-                            src="/projects/future-demo-video.mp4" 
-                            autoPlay loop muted playsInline
-                            className="w-full h-full object-cover rounded-xl" 
-                          /> 
-                        */}
-                        {/* ========================================================================= */}
                       </div>
                     </div>
 
@@ -242,13 +313,13 @@ export default function ProjectsDeepDive({ language }: PageProps) {
 
                       {/* Columna Secundaria (Sidebar Sticky) */}
                       <div className="lg:col-span-1">
-                        <div className="sticky top-28 bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+                        <div className="sticky top-28 bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col h-fit">
                           <h3 className="text-xl font-bold text-slate-800 mb-6 tracking-tight">
                             {content.techStackTitle}
                           </h3>
                           
                           {/* Píldoras de Tecnologías */}
-                          <div className="flex flex-wrap gap-2 mb-10">
+                          <div className="flex flex-wrap gap-2">
                             {project.techStack.map((tech) => (
                               <span 
                                 key={tech} 
@@ -259,30 +330,42 @@ export default function ProjectsDeepDive({ language }: PageProps) {
                             ))}
                           </div>
                           
-                          {/* Botones Call to Action Dinámicos */}
-                          <div className="mt-auto space-y-3">
-                            {content.buttons.map((btn, idx) => {
-                              const Icon = btn.icon;
-                              const isOutline = btn.style === 'outline';
-                              
-                              return (
-                                <a 
-                                  key={idx}
-                                  href={btn.href} 
-                                  target={btn.href.startsWith('#') ? '_self' : '_blank'} 
-                                  rel="noopener noreferrer" 
-                                  className={`w-full flex justify-center items-center gap-2 rounded-xl py-3.5 px-6 font-semibold transition-all ${
-                                    isOutline 
-                                      ? 'border border-slate-300 text-slate-700 hover:bg-slate-50' 
-                                      : 'bg-slate-800 hover:bg-slate-700 text-white shadow-sm hover:shadow-md'
-                                  }`}
-                                >
-                                  {btn.text}
-                                  <Icon className="w-5 h-5" />
-                                </a>
-                              );
-                            })}
-                          </div>
+                          {/* Botones Call to Action Dinámicos (Solo se renderiza si hay botones) */}
+                          {content.buttons && content.buttons.length > 0 && (
+                            <div className="mt-10 space-y-3">
+                              {content.buttons.map((btn, idx) => {
+                                const Icon = btn.icon;
+                                const isOutline = btn.style === 'outline';
+                                const btnClasses = `w-full flex justify-center items-center gap-2 rounded-xl py-3.5 px-6 font-semibold transition-all ${
+                                  isOutline 
+                                    ? 'border border-slate-300 text-slate-700 hover:bg-slate-50' 
+                                    : 'bg-slate-800 hover:bg-slate-700 text-white shadow-sm hover:shadow-md'
+                                }`;
+                                
+                                if (btn.href.startsWith('/')) {
+                                  return (
+                                    <Link key={idx} to={btn.href} className={btnClasses}>
+                                      {btn.text}
+                                      <Icon className="w-5 h-5" />
+                                    </Link>
+                                  );
+                                }
+
+                                return (
+                                  <a 
+                                    key={idx}
+                                    href={btn.href} 
+                                    target={btn.href.startsWith('#') ? '_self' : '_blank'} 
+                                    rel="noopener noreferrer" 
+                                    className={btnClasses}
+                                  >
+                                    {btn.text}
+                                    <Icon className="w-5 h-5" />
+                                  </a>
+                                );
+                              })}
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
